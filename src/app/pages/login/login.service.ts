@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NavController, ToastController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { User } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
+  isLoggedIn: Observable<User>;
 
   constructor( 
-    private nav: NavController,
-    private toast: ToastController,
-  ){}
+    private nav: NavController,   
+    private auth: AngularFireAuth,
+    private toast: ToastController
+  ){
+    this.isLoggedIn = this.auth.authState;
+  }
 
   login(user){ 
-    if(user.email === 'aluno@ifsp.edu.br' && user.password === '12345678'){
-        //redirectiona para a home
-        this.nav.navigateForward('home');
-    }else{
-        //exibir mensagem de erro
-        this.showError();
-    }
+    this.auth.signInWithEmailAndPassword(user.email, user.password).then(() => this.nav.navigateForward('home')).catch(() => this.showError());
   }
 
   private async showError(){
@@ -30,10 +32,17 @@ export class LoginService {
   }
 
   createUser(user){
-    
+    this.auth.createUserWithEmailAndPassword(user.email, user.password).then(credentials => console.log(credentials));
   }
 
-  recoverPass(email){
+  recoverPass(data){
+    this.auth.sendPasswordResetEmail(data.email).then(()=>this.nav.navigateBack('login')).catch(err => {
+      console.log(err);
+    });
+  }
 
+  logout(){
+    this.auth.signOut().then(()=>this.nav.navigateBack('login'));
   }
 }
+

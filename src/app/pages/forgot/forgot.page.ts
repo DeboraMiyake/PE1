@@ -23,7 +23,7 @@ export class ForgotPage implements OnInit {
   }
 
   recoverPass(){
-    const email = this.loginForm.value;
-    this.service.recoverPass(email);
+    const data = this.loginForm.value;
+    this.service.recoverPass(data);
   }
 }
