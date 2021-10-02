@@ -1,0 +1,42 @@
+<ion-content class="ion-padding">
+
+  <topo-login title="Cadastrar usuário"></topo-login>
+
+  <form [formGroup]="loginForm" (submit)="createUser()">
+    <ion-item>
+      <ion-icon name="person" color="if" slot="start"></ion-icon>
+      <ion-input formControlName="nome" type="text" placeholder="Nome" autofocus="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person" color="if" slot="start"></ion-icon>
+      <ion-input formControlName="snome" type="text" placeholder="Sobrenome" autofocus="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="mail" color="if" slot="start"></ion-icon>
+      <ion-input formControlName="email" type="email" placeholder="E-mail" autofocus="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock-closed" color="if" slot="start"></ion-icon>
+      <ion-input formControlName="password" type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock-closed" color="if" slot="start"></ion-icon>
+      <ion-input formControlName="confirm_pass" type="password" placeholder="Confirme"></ion-input>
+    </ion-item>
+
+    <ion-button [disabled]="loginForm.invalid" type="submit" expand="block" color="if" fill="clear">Enviar</ion-button>
+  </form><br><br>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+      <ion-col>
+        <ion-button [routerLink]="['/auth']" fill="clear" color="medium">Voltar</ion-button>
+      </ion-col>
+  </ion-row>
+</ion-footer>

@@ -2,27 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'forgot',
-    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule) },
+  { path: 'auth', loadChildren: () => import('src/app/pages/auth/auth.module').then( m => m.AuthModule) },
+  { path: 'contas', loadChildren: () => import('src/app/pages/contas/contas/contas.module').then( m => m.ContasModule) }
 ];
 
 @NgModule({
