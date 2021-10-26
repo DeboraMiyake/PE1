@@ -26,4 +26,11 @@ export class ContaService {
     this.colletion = this.db.collection('conta');
     this.colletion.doc(conta.id).delete();
   }
+
+  edita(conta){
+    this.colletion = this.db.collection('conta');
+    this.colletion.doc(conta.id).update(conta);
+  }
+
+
 }

@@ -1,14 +1,17 @@
-<ion-content [fullscreen]="true">
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-title (click)="logout()">
-        Sair
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>IFnanças</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="ion-padding">
+
+  <dash-card valor="2,265" num="4" tipo="pagar"></dash-card>
+  <dash-card valor="1,896" num="11" tipo="receber"></dash-card>
+  <dash-card valor="600,00" num="15" tipo="saldo"></dash-card>
+
+  <div id="btnMenu">
+    <ion-button fill="outline" expand="block" [routerLink]="['/contas/pagar']">Contas a pagar</ion-button><br>
+    <ion-button fill="outline" expand="block" [routerLink]="['/contas/receber']">Contas a receber</ion-button><br>
   </div>
 </ion-content>

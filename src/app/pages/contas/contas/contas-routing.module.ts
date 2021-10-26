@@ -4,15 +4,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CadastroPage } from '../cadastro/cadastro.page';
-import { PagarPage } from '../pagar/pagar.page';
-import { ReceberPage } from '../receber/receber.page';
+import { ListaPage } from '../lista/lista.page';
 import { RelatorioPage } from '../relatorio/relatorio.page';
 
 const routes: Routes = [
   {
     path:'', children: [
-      { path: 'pagar', component: PagarPage },
-      { path: 'receber', component: ReceberPage },
+      { path: 'pagar', component: ListaPage },
+      { path: 'receber', component: ListaPage },
+      { path: 'lista', component: ListaPage },
       { path: 'cadastro', component: CadastroPage },
       { path: 'relatorio', component: RelatorioPage },
     ]
@@ -27,8 +27,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    PagarPage,
-    ReceberPage,
+    ListaPage,
     CadastroPage,
     RelatorioPage
   ]
